@@ -18,6 +18,7 @@ public:
                 tail->next = list2;  
                 list2 = list2->next;
             }
+            
             tail = tail->next;  
         }
 
