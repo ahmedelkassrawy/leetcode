@@ -13,27 +13,21 @@ public:
             {
                 st.push(c);
             }
-            else if(c == ')' || c == '}' || c == ']')
+            else
             {
-                if(st.empty()) 
-                {
-                    return false; 
-                }
+                if(st.empty()) return false;
 
                 char top = st.top();
                 st.pop();
 
-            
-                if((c == ')' && top != '(') || 
-                   (c == '}' && top != '{') || 
-                   (c == ']' && top != '['))
+                if(top == '(' && c != ')' ||
+                top == '[' && c != ']' ||
+                top == '{' && c != '}')
                 {
                     return false;
                 }
             }
         }
-
-        
         return st.empty();
     }
 };
