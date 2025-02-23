@@ -28,3 +28,9 @@ public:
         return fleets;
     }
 };
+
+
+//we take a vector of pair storing the pos,time
+//then sort them descendinlgy according to which is nearest to the target
+//if the time of the car is > the last time reccorded 
+//this is a new fleet and we store the time in lasttime variable
