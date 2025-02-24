@@ -2,13 +2,18 @@ class Solution {
 public:
     bool containsDuplicate(vector<int>& nums) 
     {
-       set<int> st;
+       map<int,int> mp;
+
        for(int i = 0; i < nums.size(); i++)
        {
-            st.insert(nums[i]);
+            mp[nums[i]]++;
        }
 
-       if(st.size() == nums.size())return false;
-       else return true;
+       for(int i =0; i < nums.size(); i++)
+       {
+            if(mp[nums[i]] > 1) return true;
+       }
+
+       return false;
     }
 };
