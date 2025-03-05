@@ -14,8 +14,8 @@ public:
         subst.push_back(nums[idx]);
 
         //exclude
-        subst.pop_back();
         backtrack(nums,res,subst,idx + 1);
+        subst.pop_back();
     }
 
     vector<vector<int>> subsets(vector<int>& nums) 
