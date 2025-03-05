@@ -1,26 +1,28 @@
 class Solution {
 public:
-    vector<vector<int>> subsets(vector<int>& nums) 
+    void backtrack(vector<int>& nums,vector<vector<int>>&res,vector<int>&subst,int idx)
     {
-        int n = nums.size();
-        int total = 1 << n;
-
-        vector<vector<int>> res;
-
-        for(int mask = 0;mask < total;mask++)
+        //base case
+        if(idx == nums.size())
         {
-            vector<int> subst;
-            for(int i = 0; i< n; i++)
-            {
-                if(mask & (1 << i))
-                {
-                    subst.push_back(nums[i]);
-                }
-            }
             res.push_back(subst);
+            return;
         }
 
-        return res;
+        //include
+        backtrack(nums,res,subst,idx + 1);
+        subst.push_back(nums[idx]);
 
+        //exclude
+        subst.pop_back();
+        backtrack(nums,res,subst,idx + 1);
+    }
+
+    vector<vector<int>> subsets(vector<int>& nums) 
+    {
+        vector<vector<int>> res;
+        vector<int> subst;
+        backtrack(nums,res,subst,0);
+        return res;
     }
 };
