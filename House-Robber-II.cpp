@@ -11,7 +11,7 @@ public:
         int cnt2 = dp(idx + 1, nums, end); //skip the current house
 
         // Store the result in memo table and return
-        return dp1[idx] = max(robCurrent, skipCurrent);
+        return dp1[idx] = max(cnt1, cnt2);
     }
 
     int rob(vector<int>& nums) {
@@ -32,6 +32,6 @@ public:
     }
 };
 
-//so now what happens is that we only add the \end\ param in the dp func
+//so now what happens is that we only add the "end" param in the dp func
 //we run the func 2 times , one time inlcuding the last and not the 1st element
 //and vice versa
