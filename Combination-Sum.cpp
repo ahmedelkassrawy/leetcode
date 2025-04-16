@@ -19,9 +19,11 @@ private:
         //include
         subst.push_back(candidates[idx]);
         backtrack(candidates, target, idx, subst, total + candidates[idx], res);
+        //we use the idx without idx + 1 , because here we could reuse the same idx again if we have to
 
         //exclude
         subst.pop_back();
         backtrack(candidates, target, idx + 1, subst, total, res);
+        //here we are excluding so the idx + 1 is a must and total + 0 since we are excluding the curr element, no gain
     }    
 };
